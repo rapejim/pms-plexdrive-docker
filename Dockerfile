@@ -1,4 +1,4 @@
-FROM plexinc/pms-docker:plexpass
+FROM plexinc/pms-docker:beta
 
 MAINTAINER sh1ny@me.com
 
@@ -23,23 +23,6 @@ RUN \
   mv plexdrive /usr/local/bin/ &&\
   chown root:root /usr/local/bin/plexdrive &&\
   chmod 755 /usr/local/bin/plexdrive &&\
-  echo '[Unit]
-Description=Mount Gdrive to /mnt/Gdrive
-After=syslog.target local-fs.target network.target
-[Service]
-Type=simple
-User=root
-ExecStartPre=-/bin/mkdir /mnt/Gdrive
-ExecStart=/usr/sbin/rclone mount \
-  --config /config/rclone/rclone.conf \
-  --allow-other \
-  --buffer-size 64M \
-  Gdrive: /mnt/Gdrive
-ExecStop=/bin/fusermount -u /mnt/Gdrive
-Restart=always
-[Install]
-WantedBy=multi-user.target' > /etc/systemd/system/gdrive.service &&\
-  systemctl start gdrive.service ; systemctl enable gdrive.service ;\
   apt remove -y unzip && apt -y autoremove && apt -y clean &&\
   rm -rf /var/lib/apt/lists/* /tmp/* var/tmp/*
 
