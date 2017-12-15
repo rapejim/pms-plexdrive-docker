@@ -5,11 +5,11 @@ MAINTAINER sh1ny@me.com
 ENTRYPOINT ["/init"]
 
 RUN \
-  apt update &&\
-  apt -y install wget unzip fuse &&\
+  apt-get update &&\
+  apt-get -y install wget unzip fuse &&\
   mkdir -p /tmp/rclone && cd /tmp/rclone &&\
   wget -q "https://downloads.rclone.org/rclone-current-linux-amd64.zip" &&\
-  unzip /tmp/rclone-current-linux-amd64.zip &&\
+  unzip rclone-current-linux-amd64.zip &&\
   cp ./rclone*linux-amd64/rclone /usr/sbin &&\
   chown root:root /usr/sbin/rclone &&\
   chmod 755 /usr/sbin/rclone &&\
@@ -23,7 +23,7 @@ RUN \
   mv plexdrive /usr/local/bin/ &&\
   chown root:root /usr/local/bin/plexdrive &&\
   chmod 755 /usr/local/bin/plexdrive &&\
-  apt remove -y unzip && apt -y autoremove && apt -y clean &&\
+  apt-get -y remove unzip && apt-get -y autoremove && apt-get -y clean &&\
   rm -rf /var/lib/apt/lists/* /tmp/* var/tmp/*
 
 VOLUME /home/Plex
