@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+
+echo "Stopping Plexdrive"
+home="$(echo ~plex)"
+
+exec s6-setuidgid plex \
+  /bin/sh -c \
+    "/bin/fusermount -u -z /home/Plex" \
+  && rmdir /home/Plex

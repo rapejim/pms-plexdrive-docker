@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bash
+
+# If the first run completed successfully, we are done
+if [ -e /.firstPlexdriveRunComplete ]; then
+  exit 0
+fi
+
+home="$(echo ~plex)"
+configSubDir="${home}/.plexdrive"
+
+# Update ownership of dirs we need to write
+if [ "${CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP,,}" = "true" ]; then
+  if [ -d "${configSubDir}" ]; then
+    chown -R plex:plex /config/.plexdrive
+    touch /.firstPlexdriveRunComplete
+  else
+    echo "Plexdrive config folder does not exist"
+  fi
+fi
