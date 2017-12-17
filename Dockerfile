@@ -4,9 +4,9 @@ MAINTAINER sh1ny@me.com
 
 ENTRYPOINT ["/init"]
 
-ENV CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP="true" \
-    PLEXDRIVE_MOUNT_POINT="/home/Plex" \
-    CLOUD_MEDIA_LOCATION="Movies"
+ENV PLEXDRIVE_CONFIG_DIR=".plexdrive" \
+    CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP="true" \
+    PLEXDRIVE_MOUNT_POINT="/home/Plex"
 
 COPY root/ /
 
@@ -18,4 +18,4 @@ RUN apt-get update -qq && apt-get install -qq -y \
   && rm -rf /tmp/* /var/lib/apt/lists/*
 
 HEALTHCHECK --interval=3m --timeout=100s \
-CMD ls ${PLEXDRIVE_MOUNT_POINT}/${CLOUD_MEDIA_LOCATION} && /healthcheck.sh || exit 1
+CMD test -r $(find ${PLEXDRIVE_MOUNT_POINT} -maxdepth 1 -print -quit) && /healthcheck.sh || exit 1
