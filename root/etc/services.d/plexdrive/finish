@@ -5,5 +5,4 @@ home="$(echo ~plex)"
 
 exec s6-setuidgid plex \
   /bin/sh -c \
-    "/bin/fusermount -u -z ${PLEXDRIVE_MOUNT_POINT}" \
-  && rmdir ${PLEXDRIVE_MOUNT_POINT}
+    "/bin/fusermount -u -z ${PLEXDRIVE_MOUNT_POINT}"
