@@ -36,7 +36,7 @@ docker run --name docker-pms-plexdrive \
            1mmortal/docker-pms-plexdrive:public
 ```
 
-##Parameters
+## Parameters
 
 Those are not required unless you want to preserve your current folder structure or maintain special file permissions.
 
@@ -46,7 +46,7 @@ Those are not required unless you want to preserve your current folder structure
 - `PLEX_UID` and `PLEX_GID` Sets user ID and group ID for `Plex` user. Useful if you want them to match those of your own user on the host.
 
 
-##Host folder structure example
+## Host folder structure example
 
 ```
 Docker Data
