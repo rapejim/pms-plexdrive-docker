@@ -1,4 +1,4 @@
-FROM plexinc/pms-docker:public
+FROM plexinc/pms-docker:beta
 
 MAINTAINER sh1ny@me.com
 
