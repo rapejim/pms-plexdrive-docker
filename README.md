@@ -59,3 +59,8 @@ Docker Data
 │   └── transcode
 └── ...
 ```
+## Tags
+Tags correspond to those of the official Plex Media Server Docker container:
+- `public` — Public release of PMS
+- `beta` — Beta release of PMS, aka 'PlexPass'
+- `latest` — currently the same as `public`
