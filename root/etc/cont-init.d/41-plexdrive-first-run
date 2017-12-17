@@ -11,9 +11,13 @@ configSubDir="${home}/.plexdrive"
 # Update ownership of dirs we need to write
 if [ "${CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP,,}" = "true" ]; then
   if [ -d "${configSubDir}" ]; then
-    chown -R plex:plex /config/.plexdrive
-    touch /.firstPlexdriveRunComplete
+    chown -Rc plex:plex ${home}/.plexdrive
   else
     echo "Plexdrive config folder does not exist"
   fi
 fi
+
+mkdir -p ${PLEXDRIVE_MOUNT_POINT} 2>/dev/null
+chown -Rc plex:plex ${PLEXDRIVE_MOUNT_POINT}
+
+touch /.firstPlexdriveRunComplete

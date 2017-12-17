@@ -10,9 +10,10 @@ ENV CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP="true" \
 
 COPY root/ /
 
-RUN apt-get update && apt-get -y install \
+RUN apt-get update -qq && apt-get install -qq -y \
     fuse \
     wget \
+  && echo "user_allow_other" > /etc/fuse.conf \
   && /plexdrive-install.sh \
   && rm -rf /tmp/* /var/lib/apt/lists/*
 
