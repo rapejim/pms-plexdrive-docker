@@ -7,9 +7,9 @@ All options are inherited from the [official PMS container](https://github.com/p
 
 Make sure to either place Plexdrive config files (`config.json`, `token.json`, and optionally `cache.bolt`) in `PLEXDRIVE_CONFIG_DIR` folder within Plex Media Server config folder (next to the Library folder) or run the following in the container once and configure the credentials:
 ```
-plexdrive mount -c ${HOME}/${PLEXDRIVE_CONFIG_DIR} --cache-file=${HOME}/${PLEXDRIVE_CONFIG_DIR}/cache.bolt -o allow_other ${PLEXDRIVE_MOUNT_POINT}`
+plexdrive mount -c ${HOME}/${PLEXDRIVE_CONFIG_DIR} --cache-file=${HOME}/${PLEXDRIVE_CONFIG_DIR}/cache.bolt -o allow_other ${PLEXDRIVE_MOUNT_POINT}
 ```
-No need to wait for Plexdrive to complete its initial cache building process.
+No need to wait for Plexdrive to complete its initial cache building process after obtaining the token.
 
 Example run command:
 
@@ -41,7 +41,7 @@ docker run --name docker-pms-plexdrive \
 
 Those are not required unless you want to preserve your current folder structure or maintain special file permissions.
 
-- `PLEXDRIVE_CONFIG_DIR` Sets the name of Plexdrive config folder found within PMS config folder.
+- `PLEXDRIVE_CONFIG_DIR` Sets the name of Plexdrive config folder found within PMS config folder. Default is `.plexdrive`.
 - `PLEXDRIVE_MOUNT_POINT` Sets the name of internal Plexdrive mount point. Default is `/home/Plex`.
 - `CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP` Defines if the container should attempt to correct permissions of existing Plexdrive config files.
 - `PLEX_UID` and `PLEX_GID` Sets user ID and group ID for `Plex` user. Useful if you want them to match those of your own user on the host.
