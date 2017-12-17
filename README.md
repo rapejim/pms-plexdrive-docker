@@ -15,6 +15,7 @@ Example run command:
 
 ```
 docker run --name docker-pms-plexdrive \
+           -d \
            -e TZ="<your timezone>" \
            -e CHANGE_CONFIG_DIR_OWNERSHIP="false" \
            -h <HOSTNAME> \
