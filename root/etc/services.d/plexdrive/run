@@ -6,4 +6,4 @@ home="$(echo ~plex)"
 exec mkdir -p /home/Plex && \
   s6-setuidgid plex \
     /bin/sh -c \
-      "/usr/local/bin/plexdrive mount -c ${home}/.plexdrive --cache-file ${home}/.plexdrive/cache.bolt -o allow_other ${PLEXDRIVE_MOUNT_POINT}"
+      "/usr/local/bin/plexdrive mount -c ${home}/.plexdrive --cache-file=${home}/.plexdrive/cache.bolt -o allow_other ${PLEXDRIVE_MOUNT_POINT}"
