@@ -6,7 +6,8 @@ ENTRYPOINT ["/init"]
 
 ENV PLEXDRIVE_CONFIG_DIR=".plexdrive" \
     CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP="true" \
-    PLEXDRIVE_MOUNT_POINT="/home/Plex"
+    PLEXDRIVE_MOUNT_POINT="/home/Plex" \
+    EXTRA_PARAMS=""
 
 COPY root/ /
 
