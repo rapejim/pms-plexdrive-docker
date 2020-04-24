@@ -1,6 +1,6 @@
 FROM plexinc/pms-docker:public
 
-MAINTAINER sh1ny@me.com
+LABEL maintainer="https://github.com/rapejim/pms-plexdrive-docker"
 
 ENTRYPOINT ["/init"]
 
