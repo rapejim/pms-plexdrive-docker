@@ -6,7 +6,7 @@ echo "Starting Plexdrive v${version}"
 home="$(echo ~plex)"
 configSubDir="${home}/${PLEXDRIVE_CONFIG_DIR}"
 
-if [ -r "${configSubDir}/config.json" ] || [ -r "${configSubDir}/token.json" ]; then
+if [ -r "${configSubDir}/config.json" ] && [ -r "${configSubDir}/token.json" ]; then
   exec s6-setuidgid plex \
       /bin/sh -c \
         "/usr/local/bin/plexdrive mount -v 2 -c ${HOME}/${PLEXDRIVE_CONFIG_DIR} --cache-file=${HOME}/${PLEXDRIVE_CONFIG_DIR}/cache.bolt ${EXTRA_PARAMS} -o allow_other ${PLEXDRIVE_MOUNT_POINT}"
