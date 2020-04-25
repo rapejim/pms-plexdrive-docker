@@ -14,9 +14,15 @@ COPY root/ /
 RUN apt-get update -qq && apt-get install -qq -y \
     fuse \
     wget \
-  && echo "user_allow_other" > /etc/fuse.conf \
-  && /plexdrive-install.sh \
-  && rm -rf /tmp/* /var/lib/apt/lists/*
+    && \
+    echo "user_allow_other" > /etc/fuse.conf &&\
+    /plexdrive-install.sh && \
+    # Cleanup
+    apt-get -y autoremove && \
+    apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/* && \
+    rm -rf /var/tmp/*
 
 HEALTHCHECK --interval=3m --timeout=100s \
 CMD test -r $(find ${PLEXDRIVE_MOUNT_POINT} -maxdepth 1 -print -quit) && /healthcheck.sh || exit 1
