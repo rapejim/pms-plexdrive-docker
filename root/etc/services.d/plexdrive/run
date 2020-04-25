@@ -3,6 +3,9 @@
 version=$(/usr/local/bin/plexdrive --version)
 echo "Starting Plexdrive v${version}"
 
+home="$(echo ~plex)"
+configSubDir="${home}/${PLEXDRIVE_CONFIG_DIR}"
+
 if [ -r "${configSubDir}/config.json" ] || [ -r "${configSubDir}/token.json" ]; then
   exec s6-setuidgid plex \
       /bin/sh -c \
