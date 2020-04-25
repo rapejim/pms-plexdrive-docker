@@ -15,7 +15,9 @@ RUN apt-get update -qq && apt-get install -qq -y \
     fuse \
     wget \
     && \
+    # Update fuse.conf
     echo "user_allow_other" > /etc/fuse.conf &&\
+    # Install plexdrive
     /plexdrive-install.sh && \
     # Cleanup
     apt-get -y autoremove && \
