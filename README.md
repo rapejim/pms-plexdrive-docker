@@ -9,11 +9,7 @@ Make sure to either place Plexdrive config files (`config.json`, `token.json`, a
 ```
 plexdrive mount -c ${HOME}/${PLEXDRIVE_CONFIG_DIR} --cache-file=${HOME}/${PLEXDRIVE_CONFIG_DIR}/cache.bolt -o allow_other ${PLEXDRIVE_MOUNT_POINT}
 ```
-<<<<<<< HEAD
-No need to wait for Plexdrive to complete its initial cache building process after obtaining the token.
-=======
 No need to wait for Plexdrive to complete its initial cache building process. Now you have the `config.json` and `token.json` created and can exit from terminal (Cntrl + C and `exit`).
->>>>>>> develop
 
 Example run command:
 
