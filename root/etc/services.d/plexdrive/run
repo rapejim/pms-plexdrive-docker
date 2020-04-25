@@ -1,6 +1,7 @@
 #!/usr/bin/with-contenv bash
 
-echo "Starting Plexdrive"
+version=$(/usr/local/bin/plexdrive --version)
+echo "Starting Plexdrive v. ${version}"
 
 exec s6-setuidgid plex \
       /bin/sh -c \
