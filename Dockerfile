@@ -1,21 +1,30 @@
 FROM plexinc/pms-docker:public
 
-MAINTAINER sh1ny@me.com
+LABEL maintainer="https://github.com/rapejim/pms-plexdrive-docker"
 
 ENTRYPOINT ["/init"]
 
 ENV PLEXDRIVE_CONFIG_DIR=".plexdrive" \
     CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP="true" \
-    PLEXDRIVE_MOUNT_POINT="/home/Plex"
+    PLEXDRIVE_MOUNT_POINT="/home/Plex" \
+    EXTRA_PARAMS=""
 
 COPY root/ /
 
 RUN apt-get update -qq && apt-get install -qq -y \
     fuse \
     wget \
-  && echo "user_allow_other" > /etc/fuse.conf \
-  && /plexdrive-install.sh \
-  && rm -rf /tmp/* /var/lib/apt/lists/*
+    && \
+    # Update fuse.conf
+    echo "user_allow_other" > /etc/fuse.conf &&\
+    # Install plexdrive
+    /plexdrive-install.sh && \
+    # Cleanup
+    apt-get -y autoremove && \
+    apt-get -y clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/* && \
+    rm -rf /var/tmp/*
 
 HEALTHCHECK --interval=3m --timeout=100s \
 CMD test -r $(find ${PLEXDRIVE_MOUNT_POINT} -maxdepth 1 -print -quit) && /healthcheck.sh || exit 1
