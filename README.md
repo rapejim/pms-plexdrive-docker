@@ -34,7 +34,7 @@ docker run --name docker-pms-plexdrive \
            --cap-add SYS_ADMIN \
            --device /dev/fuse \
            --restart=unless-stopped \
-           rapejim/pms-plexdrive-docker:public
+           rapejim/pms-plexdrive-docker
 ```
 
 ## Parameters
