@@ -1,12 +1,12 @@
-# ***Plex Media Server and Plexdrive docker image***
+# ***Plex Media Server and Plexdrive, docker image 🐳***
 
 <div align="center"><img src="./images/banner.png" width="50%"></div>
 
 Combine the power of **Plex Media Server** *(hereinafter PMS)* with the media files of your Google Drive account *(or a Team Drive)* mounted it by **Plexdrive**.
 
-Based on official [PMS image for Docker](https://github.com/plexinc/pms-docker) and installed inside [Plexdrive v.5.1.0](https://github.com/plexdrive/plexdrive) <br>
-***IMPORTANT:*** *All options are inherited from the official PMS container. [Refer to PMS documentation for more info](https://hub.docker.com/r/plexinc/pms-docker).* <br>
-*Forked from original https://bitbucket.org/sh1ny/docker-pms-plexdrive repository.*
+Based on official [PMS image for Docker](https://hub.docker.com/r/plexinc/pms-docker) and installed inside [Plexdrive v.5.1.0](https://github.com/plexdrive/plexdrive)<br>
+*Forked from original https://bitbucket.org/sh1ny/docker-pms-plexdrive repository.* <br>
+***IMPORTANT:*** *All options are inherited from the official PMS container. [Refer to PMS documentation for more info](https://github.com/plexinc/pms-docker).* 
 <br>
 <br>
 <br>
@@ -16,7 +16,7 @@ Based on official [PMS image for Docker](https://github.com/plexinc/pms-docker) 
 ---
 
 You must have your own `Client ID` & `Client Secret` to configure plexdrive. If you don't have it, you can follow any internet guide, for example:
-- [English](https://rclone.org/drive/#making-your-own-client-id)
+- [English](https://github.com/Cloudbox/Cloudbox/wiki/Google-Drive-API-Client-ID-and-Client-Secret)
 - [Spanish](https://www.uint16.es/2019/11/04/como-obtener-tu-propio-client-id-de-google-drive-para-rclone/)
 
 Or you can use the configuration files from a previous plexdrive installation (the `config.json` and `token.json` files, preferably not reusing the `cache.bolt`, it is better that this installation generates a new one).
@@ -42,7 +42,7 @@ docker run --name Plex -d \
     --restart=unless-stopped \
     rapejim/pms-plexdrive-docker
 ```
-***NOTE:*** *You must replace `Europe/Madrid` for your time zone and `/docker/pms-plexdrive/...` for your own path (if not use this folder structure). If you have config files (`config.json` and `token.json`) from previous installation of plexdrive, place it on `</path/to/pms-plexdrive/config/.plexdrive>` folder.* 
+***NOTE:*** *You must replace `Europe/Madrid` for your time zone and `/docker/pms-plexdrive/...` for your own path (if not use this folder structure). If you have config files (`config.json` and `token.json`) from previous installation of plexdrive, place it on `</docker/pms-plexdrive/config/.plexdrive>` folder.* 
 <br>
 <br>
 <br>
@@ -72,7 +72,7 @@ docker run --name Plex -h Plex -d \
     --restart=unless-stopped \
     rapejim/pms-plexdrive-docker
 ```
-***NOTE:*** *You must replace `Europe/Madrid` for your time zone and `/docker/pms-plexdrive/...` for your own path (if not use this folder structure). If you have config files (`config.json` and `token.json`) from previous installation of plexdrive, place it on `</path/to/pms-plexdrive/config/.plexdrive>` folder.*
+***NOTE:*** *You must replace `Europe/Madrid` for your time zone and `/docker/pms-plexdrive/...` for your own path (if not use this folder structure). If you have config files (`config.json` and `token.json`) from previous installation of plexdrive, place it on `/docker/pms-plexdrive/config/.plexdrive` folder.*
 <br>
 <br>
 <br>
@@ -107,7 +107,7 @@ Those are not required unless you want to preserve your current folder structure
   - `--drive-id=ABC123qwerty987` for **Team Drive** with id `ABC123qwerty987`
   - `--root-node-id=DCBAqwerty987654321_ASDF123456789` for a mount only the sub directory with id `DCBAqwerty987654321_ASDF123456789`
   - *[... plexdrive documentation for more info ...](https://github.com/plexdrive/plexdrive#usage)*
-  -  **IMPORTANT:** Not allowed "`-v` `--verbosity`", "`-c` `--config`", "`--cache-file`" or "`-o` `--fuse-options`" parameters, because are already used.
+  -  **IMPORTANT:** *Not allowed "`-v` `--verbosity`", "`-c` `--config`", "`--cache-file`" or "`-o` `--fuse-options`" parameters, because are already used.*
 <br>
 <br>
 
