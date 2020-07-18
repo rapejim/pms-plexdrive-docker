@@ -1,43 +1,101 @@
-# Docker container for Plex Media Server and Plexdrive
-Based on official Docker container for Plex Media Server. Plexdrive v.5.1.0 <br>
-*Fork of original https://bitbucket.org/sh1ny/docker-pms-plexdrive*
+# ***Plex Media Server and Plexdrive docker image***
 
-## Usage
-All options are inherited from the [official PMS container](https://github.com/plexinc/pms-docker). Refer to PMS documentation for more info.
+<div align="center"><img src="./images/banner.png" width="50%"></div>
 
-Make sure to either place Plexdrive config files (`config.json`, `token.json`, and optionally `cache.bolt`) in `PLEXDRIVE_CONFIG_DIR` folder within Plex Media Server config folder (next to the Library folder */config*) or enter on container terminal and run the following command once to configure the credentials:
+Combine the power of **Plex Media Server** *(hereinafter PMS)* with the media files of your Google Drive account *(or a Team Drive)* mounted it by **Plexdrive**.
+
+Based on official [PMS image for Docker](https://github.com/plexinc/pms-docker) and installed inside [Plexdrive v.5.1.0](https://github.com/plexdrive/plexdrive) <br>
+***IMPORTANT:*** *All options are inherited from the official PMS container. [Refer to PMS documentation for more info](https://hub.docker.com/r/plexinc/pms-docker).* <br>
+*Forked from original https://bitbucket.org/sh1ny/docker-pms-plexdrive repository.*
+<br>
+<br>
+<br>
+
+
+## ***Prerequisites***
+---
+
+You must have your own `Client ID` & `Client Secret` to configure plexdrive. If you don't have it, you can follow any internet guide, for example:
+- [English](https://rclone.org/drive/#making-your-own-client-id)
+- [Spanish](https://www.uint16.es/2019/11/04/como-obtener-tu-propio-client-id-de-google-drive-para-rclone/)
+
+Or you can use the configuration files from a previous plexdrive installation (the `config.json` and `token.json` files, preferably not reusing the `cache.bolt`, it is better that this installation generates a new one).
+<br>
+<br>
+<br>
+
+## ***Example run commands***
+---
+
+### **Minimal** example run command *(host network)*:
+
 ```
-plexdrive mount -c ${HOME}/${PLEXDRIVE_CONFIG_DIR} --cache-file=${HOME}/${PLEXDRIVE_CONFIG_DIR}/cache.bolt -o allow_other ${PLEXDRIVE_MOUNT_POINT}
+docker run --name Plex -d \
+    --net=host \
+    -e TZ="Europe/Madrid" \
+    -v /docker/pms-plexdrive/config>:/config \
+    -v /docker/pms-plexdrive/transcode>:/transcode \
+    --privileged \
+    --cap-add MKNOD \
+    --cap-add SYS_ADMIN \
+    --device /dev/fuse \
+    --restart=unless-stopped \
+    rapejim/pms-plexdrive-docker
 ```
-No need to wait for Plexdrive to complete its initial cache building process. Now you have the `config.json` and `token.json` created and can exit from terminal (Cntrl + C and `exit`).
+***NOTE:*** *You must replace `Europe/Madrid` for your time zone and `/docker/pms-plexdrive/...` for your own path (if not use this folder structure). If you have config files (`config.json` and `token.json`) from previous installation of plexdrive, place it on `</path/to/pms-plexdrive/config/.plexdrive>` folder.* 
+<br>
+<br>
+<br>
 
-Example run command:
+### **Advanced** example run command *(bridge network)*:
 
 ```
-docker run --name docker-pms-plexdrive \
-           -d \
-           -e TZ="<your timezone>" \
-           -e CHANGE_CONFIG_DIR_OWNERSHIP="false" \
-           -h <HOSTNAME> \
-           -p 32400:32400/tcp \
-           -p 3005:3005/tcp \
-           -p 8324:8324/tcp \
-           -p 32469:32469/tcp \
-           -p 1900:1900/udp \
-           -p 32410:32410/udp \
-           -p 32412:32412/udp \
-           -p 32413:32413/udp \
-           -p 32414:32414/udp \
-           -v /path/to/pms/config:/config \
-           -v /path/to/pms/transcode/temp:/transcode \
-           --cap-add MKNOD \
-           --cap-add SYS_ADMIN \
-           --device /dev/fuse \
-           --restart=unless-stopped \
-           rapejim/pms-plexdrive-docker:public
+docker run --name Plex -h Plex -d \
+    -p 32400:32400/tcp \
+    -p 3005:3005/tcp \ # Optional
+    -p 8324:8324/tcp \ # Optional
+    -p 32469:32469/tcp \ # Optional
+    -p 1900:1900/udp \ # Optional
+    -p 32410:32410/udp \ # Optional
+    -p 32412:32412/udp \ # Optional
+    -p 32413:32413/udp \ # Optional
+    -p 32414:32414/udp \ # Optional
+    -e TZ="Europe/Madrid" \
+    -e PLEX_UID=${UID} \
+    -e PLEX_GID=$(id -g) \
+    -v /docker/pms-plexdrive/config:/config \
+    -v /docker/pms-plexdrive/transcode:/transcode \
+    --privileged \
+    --cap-add MKNOD \
+    --cap-add SYS_ADMIN \
+    --device /dev/fuse \
+    --restart=unless-stopped \
+    rapejim/pms-plexdrive-docker
 ```
+***NOTE:*** *You must replace `Europe/Madrid` for your time zone and `/docker/pms-plexdrive/...` for your own path (if not use this folder structure). If you have config files (`config.json` and `token.json`) from previous installation of plexdrive, place it on `</path/to/pms-plexdrive/config/.plexdrive>` folder.*
+<br>
+<br>
+<br>
 
-## Parameters
+## ***First usage and initial config***
+---
+On the first run of container (without config files of previous installation) you must enter inside container console, copy-paste and run this command:
+```
+plexdrive mount -c ${HOME}/${PLEXDRIVE_CONFIG_DIR} --cache-file=${HOME}/${PLEXDRIVE_CONFIG_DIR}/cache.bolt -o allow_other ${PLEXDRIVE_MOUNT_POINT} {EXTRA_PARAMS}
+```
+This command start a config wizzard:
+- It asks you for your `Client ID` and `Client Secret`
+- Shows you a link to log in using your Google Drive account (which you used to get that `Client ID` and `Client Secret`).
+- The web show you a token that you must copy it and paste on terminal.
+- When you complete it, Plexdrive start caching your Google Drive account files on second plane, no need to wait for Plexdrive to complete its initial cache building process on this console, now you have the `config.json` and `token.json` created and can exit from terminal (*Cntrl + C* and `exit`).
+
+***NOTE:*** *If you are creating this container on a remote computer (outside your local network) it is recommended to use the environment variable `PLEX_CLAIM` of original [PMS docker image](https://github.com/plexinc/pms-docker) to link this new server to your own account on first run.*
+<br>
+<br>
+<br>
+
+## ***Parameters***
+---
 
 Those are not required unless you want to preserve your current folder structure or maintain special file permissions.
 
@@ -46,17 +104,23 @@ Those are not required unless you want to preserve your current folder structure
 - `CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP` Defines if the container should attempt to correct permissions of existing Plexdrive config files.
 - `PLEX_UID` and `PLEX_GID` Sets user ID and group ID for `Plex` user. Useful if you want them to match those of your own user on the host.
 - `EXTRA_PARAMS` Add more advanced parameters for plexdrive to mount initial command. You can use, for example:
-  - `--drive-id=ABC123qwerty987` for Team Drive with id `ABC123qwerty987`
+  - `--drive-id=ABC123qwerty987` for **Team Drive** with id `ABC123qwerty987`
   - `--root-node-id=DCBAqwerty987654321_ASDF123456789` for a mount only the sub directory with id `DCBAqwerty987654321_ASDF123456789`
   - *[... plexdrive documentation for more info ...](https://github.com/plexdrive/plexdrive#usage)*
   -  **IMPORTANT:** Not allowed "`-v` `--verbosity`", "`-c` `--config`", "`--cache-file`" or "`-o` `--fuse-options`" parameters, because are already used.
+<br>
+<br>
 
+***REMEMBER:*** *All options from the official PMS container are inherited. [Refer to PMS documentation for more info](https://hub.docker.com/r/plexinc/pms-docker).*
+<br>
+<br>
+<br>
 
-## Host folder structure example
-
+## ***Host folder structure example***
+---
 ```
-Docker Data
-├── pms-docker
+Docker Data Folder
+├── pms-plexdrive
 │   ├── config
 │   │   ├── .plexdrive
 │   │   │   └── ...
@@ -65,10 +129,15 @@ Docker Data
 │   └── transcode
 └── ...
 ```
-## Tags
+<br>
+<br>
+<br>
 
-Tags correspond to those of the official Plex Media Server Docker container:
+## ***Tags***
+---
+
+Tags correspond to those of the official PMS Docker container:
 
 - `public` — Public release of PMS.
-- `beta` — Beta release of PMS, aka 'PlexPass'.
+- `beta` — Beta release of PMS, ***(Plex Pass required)***.
 - `latest` — currently the same as `public`.
