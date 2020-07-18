@@ -1,6 +1,6 @@
-# ***Plex Media Server and Plexdrive, docker image 🐳***
+# ***Plex Media Server and Plexdrive 🐳***
 
-<div align="center"><img src="./images/banner.png" width="50%"></div>
+<div align="center"><img src="https://raw.githubusercontent.com/rapejim/pms-plexdrive-docker/public/images/banner.png" width="50%"></div>
 
 Combine the power of **Plex Media Server** *(hereinafter PMS)* with the media files of your Google Drive account *(or a Team Drive)* mounted it by **Plexdrive**.
 
