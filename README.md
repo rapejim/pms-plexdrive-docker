@@ -33,8 +33,8 @@ Or you can use the configuration files from a previous plexdrive installation (t
 docker run --name Plex -d \
     --net=host \
     -e TZ="Europe/Madrid" \
-    -v /docker/pms-plexdrive/config>:/config \
-    -v /docker/pms-plexdrive/transcode>:/transcode \
+    -v /docker/pms-plexdrive/config:/config \
+    -v /docker/pms-plexdrive/transcode:/transcode \
     --privileged \
     --cap-add MKNOD \
     --cap-add SYS_ADMIN \
@@ -42,7 +42,7 @@ docker run --name Plex -d \
     --restart=unless-stopped \
     rapejim/pms-plexdrive-docker
 ```
-***NOTE:*** *You must replace `Europe/Madrid` for your time zone and `/docker/pms-plexdrive/...` for your own path (if not use this folder structure). If you have config files (`config.json` and `token.json`) from previous installation of plexdrive, place it on `</docker/pms-plexdrive/config/.plexdrive>` folder.* 
+***NOTE:*** *You must replace `Europe/Madrid` for your time zone and `/docker/pms-plexdrive/...` for your own path (if not use this folder structure). If you have config files (`config.json` and `token.json`) from previous installation of plexdrive, place it on `/docker/pms-plexdrive/config/.plexdrive` folder.* 
 <br>
 <br>
 <br>
