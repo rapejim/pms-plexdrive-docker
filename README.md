@@ -33,6 +33,8 @@ Or you can use the configuration files from a previous plexdrive installation (t
 docker run --name Plex -d \
     --net=host \
     -e TZ="Europe/Madrid" \
+    -e PLEX_UID=${UID} \
+    -e PLEX_GID=$(id -g) \
     -v /docker/pms-plexdrive/config:/config \
     -v /docker/pms-plexdrive/transcode:/transcode \
     --privileged \
