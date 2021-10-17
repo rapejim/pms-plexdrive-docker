@@ -7,7 +7,7 @@ name: Docker
 
 on:
   # schedule:
-  #   - cron: '25 6 * * *'
+  #   - cron: '15 6 * * *'
   push:
     branches: [ public ]
   pull_request:
@@ -57,8 +57,8 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           tags: |
-            public
-            latest
+            type=ref,event=branch
+            type=raw,latest
           images: |
             ${{ github.repository }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
