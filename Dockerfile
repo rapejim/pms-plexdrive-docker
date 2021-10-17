@@ -26,5 +26,5 @@ RUN apt-get update -qq && apt-get install -qq -y \
     rm -rf /tmp/* && \
     rm -rf /var/tmp/*
 
-HEALTHCHECK --interval=3m --timeout=100s \
+HEALTHCHECK --interval=15s --timeout=100s \
 CMD test -r $(find ${PLEXDRIVE_MOUNT_POINT} -maxdepth 1 -print -quit) && /healthcheck.sh || exit 1
