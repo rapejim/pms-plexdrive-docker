@@ -12,14 +12,14 @@ if [ -r "${configSubDir}/config.json" ] && [ -r "${configSubDir}/token.json" ]; 
         "/usr/local/bin/plexdrive mount -v 2 -c ${HOME}/${PLEXDRIVE_CONFIG_DIR} --cache-file=${HOME}/${PLEXDRIVE_CONFIG_DIR}/cache.bolt -o allow_other ${PLEXDRIVE_MOUNT_POINT} ${EXTRA_PARAMS}"
 else
   echo "========================================================"
-  echo "|| ERROR: Plexdrive config files (config.json and token.json) not found."
-  echo "|| Enter on container terminal:"
-  echo "||   docker exec -ti CONTAINER_NAME /bin/sh"
-  echo "|| Execute a mount commmand manually:"
-  echo "||   /usr/local/bin/plexdrive mount -c \${HOME}/\${PLEXDRIVE_CONFIG_DIR} --cache-file=\${HOME}/\${PLEXDRIVE_CONFIG_DIR}/cache.bolt \${EXTRA_PARAMS} -o allow_other \${PLEXDRIVE_MOUNT_POINT}"
-  echo "|| Follow the steps, enter the client ID, the client secret, follow the link, paste the token obtained"
-  echo "|| After this steps, cancel process with Ctrl+C and tiping exit."
-  echo "|| Finally restart/recreate the container."
+  echo "ERROR: Plexdrive config files (config.json and token.json) not found."
+  echo "Enter on container terminal:"
+  echo "  docker exec -ti CONTAINER_NAME /bin/sh"
+  echo "Execute a mount commmand manually:"
+  echo "  /usr/local/bin/plexdrive mount -c \${HOME}/\${PLEXDRIVE_CONFIG_DIR} --cache-file=\${HOME}/\${PLEXDRIVE_CONFIG_DIR}/cache.bolt \${EXTRA_PARAMS} -o allow_other \${PLEXDRIVE_MOUNT_POINT}"
+  echo "Follow the steps, enter the client ID, the client secret, follow the link, paste the token obtained"
+  echo "After this steps, cancel process with Ctrl+C and tiping exit."
+  echo "Finally restart/recreate the container."
   echo "========================================================"
   sleep 30
 fi
