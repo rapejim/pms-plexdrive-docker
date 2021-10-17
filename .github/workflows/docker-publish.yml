@@ -11,7 +11,9 @@ on:
   push:
     branches: [ public ]
     # Publish semver tags as releases.
-    tags: [ 'public', 'latest' ]
+    tags: 
+      - 'public'
+      - 'latest'
   pull_request:
     branches: [ public ]
 
