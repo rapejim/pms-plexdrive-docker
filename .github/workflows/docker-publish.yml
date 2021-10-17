@@ -1,4 +1,4 @@
-name: Docker
+name: Publish on Docker & ghcr.io
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -9,9 +9,13 @@ on:
   # schedule:
   #   - cron: '15 6 * * *'
   push:
-    branches: [ public ]
-  pull_request:
-    branches: [ public ]
+    # branches: 
+    #   - develop
+    #   - beta
+  # pull_request:
+  #   branches:
+  #     - develop
+  #     - beta
 
 env:
   # Use docker.io for Docker Hub if empty
