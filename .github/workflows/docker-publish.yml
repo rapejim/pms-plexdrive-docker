@@ -57,7 +57,7 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           tags: |
-            develop
+            type=ref,event=branch
           images: |
             ${{ github.repository }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
