@@ -7,11 +7,15 @@ name: Docker
 
 on:
   # schedule:
-  #   - cron: '20 6 * * *'
+  #   - cron: '15 6 * * *'
   push:
-    branches: [ beta ]
+    branches: 
+      - develop
+      - beta
   pull_request:
-    branches: [ beta ]
+    branches:
+      - develop
+      - beta
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -57,7 +61,7 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           tags: |
-            beta
+            type=ref,event=branch
           images: |
             ${{ github.repository }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
