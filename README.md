@@ -6,10 +6,11 @@ Combine the power of **Plex Media Server** *(hereinafter PMS)* with the media fi
 
 Based on official [PMS image for Docker](https://hub.docker.com/r/plexinc/pms-docker) and installed inside [Plexdrive v.5.1.0](https://github.com/plexdrive/plexdrive)<br>
 *Forked from original https://bitbucket.org/sh1ny/docker-pms-plexdrive repository.* <br>
+
 ***IMPORTANT:*** *All options are inherited from the official PMS container. [Refer to PMS documentation for more info](https://github.com/plexinc/pms-docker).* 
 <br>
 <br>
-<br>
+Read this in other languages: [English](https://github.com/rapejim/pms-plexdrive-docker/blob/develop/README.md), [Spanish](https://github.com/rapejim/pms-plexdrive-docker/blob/develop/README.sp.md)
 
 
 ## ***Prerequisites***
@@ -20,7 +21,6 @@ You must have your own `Client ID` & `Client Secret` to configure plexdrive. If 
 - [Spanish](https://www.uint16.es/2019/11/04/como-obtener-tu-propio-client-id-de-google-drive-para-rclone/)
 
 Or you can use the configuration files from a previous plexdrive installation (the `config.json` and `token.json` files, preferably not reusing the `cache.bolt`, it is better that this installation generates a new one).
-<br>
 <br>
 <br>
 
