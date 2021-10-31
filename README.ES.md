@@ -4,7 +4,7 @@
 
 Combina el poder de **Plex Media Server** *(por sus siglas en Inglés PMS)* con
 los archivos multimedia en tu cuenta de Google Drive (o
-[unidad compartida de equipo](https://support.google.com/a/users/answer/9310156?hl=es))
+[Unidad Compartida](https://support.google.com/a/users/answer/9310156?hl=es))
 montados por [**Plexdrive**](https://github.com/plexdrive/plexdrive).
 
 Este respositorio está basado en la
@@ -150,7 +150,7 @@ actual o mantener permisos de archivo especiales.
   en el ordenador.
 - `EXTRA_PARAMS` Permite agregar parámetros más avanzados para que plexdrive 
   pueda montar el comando inicial. Por ejemplo puedes utilizar:
-  - `--drive-id=ABC123qwerty987` para montar un **Team Drive** con el 
+  - `--drive-id=ABC123qwerty987` para montar la **Unidad Compartida** con el 
   identificador `ABC123qwerty987`
   - `--root-node-id=DCBAqwerty987654321_ASDF123456789` para un montar solo el 
   subdirectorio con el identificador `DCBAqwerty987654321_ASDF123456789`
