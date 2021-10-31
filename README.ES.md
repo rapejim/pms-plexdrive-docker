@@ -9,7 +9,7 @@ montados por [**Plexdrive**](https://github.com/plexdrive/plexdrive).
 
 Este respositorio está basado en la
 [imagen Docker oficial de PMS](https://hub.docker.com/r/plexinc/pms-docker) e
-instalado en sobre [Plexdrive v.5.1.0](https://github.com/plexdrive/plexdrive). <br/>
+instalado sobre [Plexdrive v.5.1.0](https://github.com/plexdrive/plexdrive). <br/>
 *Bifurcado del repositorio original <https://bitbucket.org/sh1ny/docker-pms-plexdrive>.*
 
 ***IMPORTANTE:*** *Todas las opciones son heredadas del contenedor PMS oficial.
@@ -18,7 +18,6 @@ instalado en sobre [Plexdrive v.5.1.0](https://github.com/plexdrive/plexdrive). 
 Puedes leer este documento en otros idiomas:
 [English](https://github.com/rapejim/pms-plexdrive-docker/blob/develop/README.md),
 [Español](https://github.com/rapejim/pms-plexdrive-docker/blob/develop/README.ES.md)
-
 
 ## *Prerrequisitos*
 ---
@@ -59,7 +58,7 @@ docker run --name Plex -d \
 de los volúmenes `/docker/pms-plexdrive/...` por la que tienes en tu ordenador
 (en caso no uses la misma estructura de carpetas). Si tienes los archivos de
 configuración (`config.json` y ` token.json`) de una instalación anterior de
-plexdrive, colocalos en la carpeta `docker/pms-plexdrive/config/.plexdrive`.*
+Plexdrive, colocalos en la carpeta `docker/pms-plexdrive/config/.plexdrive`.*
 <br/>
 <br/>
 <br/>
@@ -94,7 +93,7 @@ docker run --name Plex -h Plex -d \
 de los volúmenes `/docker/pms-plexdrive/...` por la que tienes en tu ordenador
 (en caso no uses la misma estructura de carpetas). Si tienes los archivos de
 configuración (`config.json` y ` token.json`) de una instalación anterior de
-plexdrive, colocalos en la carpeta `docker/pms-plexdrive/config/.plexdrive`.*
+Plexdrive, colocalos en la carpeta `docker/pms-plexdrive/config/.plexdrive`.*
 <br/>
 <br/>
 <br/>
@@ -113,7 +112,7 @@ plexdrive mount -c ${HOME}/${PLEXDRIVE_CONFIG_DIR} --cache-file=${HOME}/${PLEXDR
 Este comando iniciará un asistente de configuración:
 
 - Solicitará tu `Client ID` y `Client Secret`
-- Te mostrará un enlace para iniciar sesión con tu cuenta de Google Drive (la 
+- Te mostrará un enlace para iniciar sesión con tu cuenta de Google Drive (la
   que utilizaste para obtener los `Client ID` y `Client Secret`).
 - El sitio web del enlace anterior, te mostrará un token que debes copiar y
   pegar en el terminal.
@@ -143,16 +142,16 @@ actual o mantener permisos de archivo especiales.
   valor predeterminado es `.plexdrive`.
 - `PLEXDRIVE_MOUNT_POINT` Establece el nombre del punto de montaje interno de
   Plexdrive. El valor predeterminado es `/home/Plex`.
-- `CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP` Define si el contenedor debe intentar 
+- `CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP` Define si el contenedor debe intentar
   corregir los permisos de los archivos de configuración de Plexdrive existentes.
 - `PLEX_UID` y `PLEX_GID` Establece el ID de usuario y el ID de grupo para el
-  usuario de `Plex`. Útil si deseas que coincidan con los de su propio usuario 
+  usuario de `Plex`. Útil si deseas que coincidan con los de su propio usuario
   en el ordenador.
-- `EXTRA_PARAMS` Permite agregar parámetros más avanzados para que plexdrive 
+- `EXTRA_PARAMS` Permite agregar parámetros más avanzados para que Plexdrive
   pueda montar el comando inicial. Por ejemplo puedes utilizar:
-  - `--drive-id=ABC123qwerty987` para montar la **Unidad Compartida** con el 
+  - `--drive-id=ABC123qwerty987` para montar la **Unidad Compartida** con el
   identificador `ABC123qwerty987`
-  - `--root-node-id=DCBAqwerty987654321_ASDF123456789` para un montar solo el 
+  - `--root-node-id=DCBAqwerty987654321_ASDF123456789` para un montar solo el
   subdirectorio con el identificador `DCBAqwerty987654321_ASDF123456789`
   - *[... Documentación de Plexdrive para más información ...](https://github.com/plexdrive/plexdrive#usage)*
   -  **IMPORTANTE:** *No es permitido utilizar los parámetros

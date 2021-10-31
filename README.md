@@ -2,7 +2,7 @@
 
 <div align="center"><img src="https://raw.githubusercontent.com/rapejim/pms-plexdrive-docker/public/images/banner.png" width="50%"></div>
 
-Combine the power of **Plex Media Server** *(hereinafter PMS)* with the media files of your Google Drive account *(or a Shared Drive)* mounted it by **Plexdrive**.
+Combine the power of **Plex Media Server** *(hereinafter PMS)* with the media files of your Google Drive account *(or a [Shared Drive](https://support.google.com/a/users/answer/9310156?hl=en))* mounted it by **Plexdrive**.
 
 Based on official [PMS image for Docker](https://hub.docker.com/r/plexinc/pms-docker) and installed inside [Plexdrive v.5.1.0](https://github.com/plexdrive/plexdrive)<br>
 *Forked from original https://bitbucket.org/sh1ny/docker-pms-plexdrive repository.* <br>
