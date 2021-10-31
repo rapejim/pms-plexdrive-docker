@@ -10,7 +10,7 @@ Based on official [PMS image for Docker](https://hub.docker.com/r/plexinc/pms-do
 ***IMPORTANT:*** *All options are inherited from the official PMS container. [Refer to PMS documentation for more info](https://github.com/plexinc/pms-docker).* 
 <br>
 <br>
-Read this in other languages: [English](https://github.com/rapejim/pms-plexdrive-docker/blob/develop/README.md), [Spanish](https://github.com/rapejim/pms-plexdrive-docker/blob/develop/README.sp.md)
+Read this in other languages: [English](https://github.com/rapejim/pms-plexdrive-docker/blob/develop/README.md), [Spanish](https://github.com/rapejim/pms-plexdrive-docker/blob/develop/README.ES.md)
 
 
 ## ***Prerequisites***
