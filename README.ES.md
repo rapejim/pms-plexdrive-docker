@@ -2,7 +2,7 @@
 
 <div align="center"><img src="https://raw.githubusercontent.com/rapejim/pms-plexdrive-docker/public/images/banner.png" width="50%"></div>
 
-Combina el poder de **Plex Media Server** *(por sus siglas en Inglés PMS)* con
+Combina el poder de **Plex Media Server** *(en adelante PMS)* con
 los archivos multimedia en tu cuenta de Google Drive (o
 [Unidad Compartida](https://support.google.com/a/users/answer/9310156?hl=es))
 montados por [**Plexdrive**](https://github.com/plexdrive/plexdrive).
@@ -12,7 +12,7 @@ Este respositorio está basado en la
 instalado sobre [Plexdrive v.5.1.0](https://github.com/plexdrive/plexdrive). <br/>
 *Bifurcado del repositorio original <https://bitbucket.org/sh1ny/docker-pms-plexdrive>.*
 
-***IMPORTANTE:*** *Todas las opciones son heredadas del contenedor PMS oficial.
+***IMPORTANTE:*** También se heredan todas las opciones originales del contenedor oficial de PMS.
 [Consulta la documentación de PMS para obtener más información](https://github.com/plexinc/pms-docker).*
 
 Puedes leer este documento en otros idiomas:
@@ -29,9 +29,9 @@ seguir cualquier guía en Internet, por ejemplo:
 - [Español](https://www.uint16.es/2019/11/04/como-obtener-tu-propio-client-id-de-google-drive-para-rclone/)
 - [English](https://github.com/Cloudbox/Cloudbox/wiki/Google-Drive-API-Client-ID-and-Client-Secret)
 
-O puedes usar los archivos `config.json` y` token.json` de una instalación
-previa de Plexdrive. En este caso, es preferible utilizar el archivo
-`cache.bolt` de una instalación nueva.
+También puedes usar los archivos `config.json` y` token.json` de una instalación
+previa de Plexdrive, aunque en este caso es preferible no reutilizar el archivo
+`cache.bolt` para que se genere uno nuevo.
 
 ## *Ejemplos de comandos de ejecución*
 ---
@@ -101,8 +101,8 @@ Plexdrive, colocalos en la carpeta `docker/pms-plexdrive/config/.plexdrive`.*
 ## *Primer uso y configuración inicial*
 ---
 
-En la primer ejecución del contenedor (sin los archivos de configuración de una
-instalación previa) debes ingresar dentro de la consola del contenedor. Luego
+En la primera ejecución del contenedor (si no tienes archivos de configuración de una
+instalación previa) debes entrar en la consola del contenedor, 
 copiar, pegar y ejecutar el siguiente comando:
 
 ```bash
@@ -154,13 +154,13 @@ actual o mantener permisos de archivo especiales.
   - `--root-node-id=DCBAqwerty987654321_ASDF123456789` para un montar solo el
   subdirectorio con el identificador `DCBAqwerty987654321_ASDF123456789`
   - *[... Documentación de Plexdrive para más información ...](https://github.com/plexdrive/plexdrive#usage)*
-  -  **IMPORTANTE:** *No es permitido utilizar los parámetros
+  -  **IMPORTANTE:** *No está permitido utilizar los parámetros
   "`-v` `--verbosity`", "`-c` `--config`", "`--cache-file`" ó
-  "`-o` `--fuse-options`", porque ya están en uso.*
+  "`-o` `--fuse-options`", porque ya se usan internamente.*
 <br/>
 <br/>
 
-***RECUERDA:*** *Todas las opciones del contenedor PMS oficial se heredan.
+***RECUERDA:*** *También se heredan todas las opciones originales del contenedor oficial de PMS.
 [Consulta la documentación de PMS para obtener más información](https://hub.docker.com/r/plexinc/pms-docker).*
 <br/>
 <br/>
