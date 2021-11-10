@@ -1,7 +1,7 @@
 #!/bin/sh
 # Plexdrive updater
 cd /tmp
-wget $(curl -s https://api.github.com/repos/plexdrive/plexdrive/releases/latest | grep 'browser_' | cut -d\" -f4 | grep plexdrive-linux-amd64) -q -O plexdrive
+wget "https://github.com/plexdrive/plexdrive/releases/download/$PLEXDRIVE_VERSION/plexdrive-linux-$ARCH" -q -O plexdrive
 chmod -c +x /tmp/plexdrive
 version=$(/tmp/plexdrive --version)
 echo "Installing Plexdrive v. ${version}"
