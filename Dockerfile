@@ -2,6 +2,9 @@ FROM plexinc/pms-docker:public
 
 LABEL maintainer="rapejim"
 
+ARG ARCH='amd64'
+ARG PLEXDRIVE_VERSION='5.1.0'
+
 ENTRYPOINT ["/init"]
 
 ENV PLEXDRIVE_CONFIG_DIR=".plexdrive" \

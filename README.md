@@ -2,14 +2,15 @@
 
 <div align="center"><img src="https://raw.githubusercontent.com/rapejim/pms-plexdrive-docker/public/images/banner.png" width="50%"></div>
 
-Combine the power of **Plex Media Server** *(hereinafter PMS)* with the media files of your Google Drive account *(or a Team Drive)* mounted it by **Plexdrive**.
+Combine the power of **Plex Media Server** *(hereinafter PMS)* with the media files of your Google Drive account *(or a [Shared Drive](https://support.google.com/a/users/answer/9310156?hl=en))* mounted it by **Plexdrive**.
 
 Based on official [PMS image for Docker](https://hub.docker.com/r/plexinc/pms-docker) and installed inside [Plexdrive v.5.1.0](https://github.com/plexdrive/plexdrive)<br>
 *Forked from original https://bitbucket.org/sh1ny/docker-pms-plexdrive repository.* <br>
+
 ***IMPORTANT:*** *All options are inherited from the official PMS container. [Refer to PMS documentation for more info](https://github.com/plexinc/pms-docker).* 
 <br>
 <br>
-<br>
+Read this in other languages: [English](https://github.com/rapejim/pms-plexdrive-docker/blob/develop/README.md), [Spanish](https://github.com/rapejim/pms-plexdrive-docker/blob/develop/README.ES.md)
 
 
 ## ***Prerequisites***
@@ -20,7 +21,6 @@ You must have your own `Client ID` & `Client Secret` to configure plexdrive. If 
 - [Spanish](https://www.uint16.es/2019/11/04/como-obtener-tu-propio-client-id-de-google-drive-para-rclone/)
 
 Or you can use the configuration files from a previous plexdrive installation (the `config.json` and `token.json` files, preferably not reusing the `cache.bolt`, it is better that this installation generates a new one).
-<br>
 <br>
 <br>
 
@@ -106,7 +106,7 @@ Those are not required unless you want to preserve your current folder structure
 - `CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP` Defines if the container should attempt to correct permissions of existing Plexdrive config files.
 - `PLEX_UID` and `PLEX_GID` Sets user ID and group ID for `Plex` user. Useful if you want them to match those of your own user on the host.
 - `EXTRA_PARAMS` Add more advanced parameters for plexdrive to mount initial command. You can use, for example:
-  - `--drive-id=ABC123qwerty987` for **Team Drive** with id `ABC123qwerty987`
+  - `--drive-id=ABC123qwerty987` for **Shared Drive** with id `ABC123qwerty987`
   - `--root-node-id=DCBAqwerty987654321_ASDF123456789` for a mount only the sub directory with id `DCBAqwerty987654321_ASDF123456789`
   - *[... plexdrive documentation for more info ...](https://github.com/plexdrive/plexdrive#usage)*
   -  **IMPORTANT:** *Not allowed "`-v` `--verbosity`", "`-c` `--config`", "`--cache-file`" or "`-o` `--fuse-options`" parameters, because are already used.*
