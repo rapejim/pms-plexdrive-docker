@@ -15,7 +15,6 @@ on:
   #   branches:
   #     - develop
   #     - beta
-  workflow_dispatch:
 
   # Allows manual trigger
   workflow_dispatch:
