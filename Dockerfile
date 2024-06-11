@@ -1,4 +1,11 @@
-FROM plexinc/pms-docker:beta
+# arm64-specific stage
+FROM rapejim/pms-docker:arm64 AS build-arm64
+
+# amd64-specific stage
+FROM plexinc/pms-docker:beta AS build-amd64
+
+# common steps
+FROM build-${TARGETARCH} AS build
 
 LABEL maintainer="rapejim"
 
