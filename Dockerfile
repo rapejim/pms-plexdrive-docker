@@ -1,15 +1,8 @@
 # arm64-specific stage
-FROM rapejim/pms-docker:arm64 AS build-arm64
-
-# amd64-specific stage
-FROM plexinc/pms-docker:beta AS build-amd64
-
-# common steps
-FROM build-${TARGETARCH} AS build
+FROM plexinc/pms-docker
 
 LABEL maintainer="rapejim"
 
-ARG ARCH='amd64'
 ARG PLEXDRIVE_VERSION='5.1.0'
 
 ENTRYPOINT ["/init"]
