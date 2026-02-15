@@ -114,3 +114,27 @@ jobs:
             PLEXDRIVE_VERSION=5.2.1
           tags: ${{ steps.meta_pd521.outputs.tags }}
           labels: ${{ steps.meta_pd521.outputs.labels }}
+
+      # Obtain current date
+      - name: Get current date
+        id: get-date
+        run: echo "date=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
+      # Send Telegram notification
+      - name: Send Telegram notification
+        if: always()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: markdown
+          disable_web_page_preview: true
+          message: |
+            🎯 *${{ github.repository }}*
+            
+            ${{ job.status == 'success' && '✅' || '❌' }} *${{ job.status == 'success' && 'Construcción completada' || 'Construcción fallida' }}*
+            
+            🌿 *Rama:* `${{ github.ref_name }}`
+            🔧 *Workflow:* `${{ github.workflow }}`
+            📅 *Fecha:* `${{ steps.get-date.outputs.date }}`
+            
+            🔗 [Ver detalles](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
